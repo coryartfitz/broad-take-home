@@ -2,7 +2,7 @@ const assert = require('assert');
 const { getRoutesDetails, getStopsDetials } = require('../app/js/route-stop-data.js');
 
 describe('#displayLongRouteNames()', function () {
-    it('should return an array of strings', () => {
+    it('should return an array of route name strings', () => {
         const expected = [
             {
                 'longName': 'Foo',
@@ -16,7 +16,7 @@ describe('#displayLongRouteNames()', function () {
                 'longName': 'FooBar',
                 'id': 'foobar'
             }
-        ]
+        ];
 
         return getRoutesDetails(getMockRoutesApiResponse()).then(response => {
             assert.deepEqual(expected, response);
@@ -25,7 +25,7 @@ describe('#displayLongRouteNames()', function () {
 });
 
 describe('#getStopsDetials()', function () {
-    it('should return an object with correct properties', () => {
+    it('should return an object with stops details properties', () => {
         const expected = {
             leastStopsCount: 2,
             leastStopsName: 'RouteTwo',
@@ -37,8 +37,8 @@ describe('#getStopsDetials()', function () {
                     routes: ['RouteTwo', 'RouteOne']
                 }
             }
-        }
-        
+        };
+    
     
         assert.deepEqual(expected, getStopsDetials((getMockStopsData())));
     });

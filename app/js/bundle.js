@@ -99,9 +99,9 @@ const getStopsDetials = routes => {
 
 
 const getStopsThatConnectRoutes = allStops => {
-  const stopsThatConnectRoutes = {}; // Merge all stops into one big lsit
+  const stopsThatConnectRoutes = {}; // Merge all stops into one big list
 
-  const mergedStops = [].concat.apply([], allStops); // Map over stops and filter for only duplicate stops - duplicates means stops exist on multiple routes
+  const mergedStops = [].concat.apply([], allStops); // Map over and filter for only duplicate stops - duplicates mean stops exist on multiple routes
 
   const duplicateStops = mergedStops.map((stop, index) => {
     return mergedStops.find((currentStop, currentIndex) => {
@@ -109,7 +109,7 @@ const getStopsThatConnectRoutes = allStops => {
         return stop;
       }
     });
-  }).filter(x => x); // Build up stopsThatConnectRoutes with stops that connect routes along with the relevant route names
+  }).filter(stop => stop); // Build up stopsThatConnectRoutes with stops that connect routes along with the relevant route names
 
   duplicateStops.forEach(stop => {
     const stopId = stop.id;

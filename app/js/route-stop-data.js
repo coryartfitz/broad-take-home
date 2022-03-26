@@ -41,17 +41,16 @@ const getStopsDetials = (routes) => {
 // This answers the problem but there has to be a better way to achieve this.
 const getStopsThatConnectRoutes = (allStops) => {
     const stopsThatConnectRoutes = {};
-    // Merge all stops into one big lsit
     const mergedStops = [].concat.apply([], allStops);
     
-    // Map over stops and filter for only duplicate stops - duplicates means stops exist on multiple routes
+    // Return a list of only the duplicate stops - duplicates mean stops exist on multiple routes
     const duplicateStops = mergedStops.map((stop, index) => {
         return mergedStops.find((currentStop, currentIndex) => {
             if (index !== currentIndex && currentStop.id === stop.id) {
                 return stop;
             }
         });
-    }).filter(x => x);
+    }).filter(stop => stop);
 
     // Build up stopsThatConnectRoutes with stops that connect routes along with the relevant route names
     duplicateStops.forEach(stop => {
