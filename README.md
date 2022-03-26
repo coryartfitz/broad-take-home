@@ -4,7 +4,7 @@ This project contains Cory Fitzpatricks answers to the Broad take-home interview
 
 # How to verify answers
 
-To verify the answers in this project, you can simply open the file /app/index.html and follow the instructions the page displays or follow the steps below.
+To verify the answers in this project, you can simply open the file /app/index.html in your favorite browsers and follow the instructions on the page or you can follow the steps below.
 
 1. Open the file /app/index.html in your favorite browsers.
 2. Right click anywhere on the page.
