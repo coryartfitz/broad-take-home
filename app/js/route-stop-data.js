@@ -37,7 +37,6 @@ const getStopsDetials = (routes) => {
     return details;
 }
 
-// TODO: Make this not an O(n) version somehow
 // TODO: Split this up into smaller chunks that can be tested individually.
 // This answers the problem but there has to be a better way to achieve this.
 const getStopsThatConnectRoutes = (allStops) => {
@@ -54,7 +53,7 @@ const getStopsThatConnectRoutes = (allStops) => {
         });
     }).filter(x => x);
 
-    // Build up a list of duplicte stops and their associated routes
+    // Build up stopsThatConnectRoutes with stops that connect routes along with the relevant route names
     duplicateStops.forEach(stop => {
         const stopId = stop.id;
         const routeName = stop.relationships.route.data.id;

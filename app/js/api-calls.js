@@ -10,13 +10,11 @@ const fetchSubwayRoutes = () => {
 	return fetchResponse('https://api-v3.mbta.com/routes?filter[type]=0,1');
 }
 
-// TODO: Test me!
 const fetchStopsByRoute = (routes) => {
     return routes.map(route => {
         return fetchResponse(`https://api-v3.mbta.com/stops?filter[route]=${route.id}&include=route`);
     });
 }
-
 
 const fetchResponse = (url) => {
     return fetch(url)

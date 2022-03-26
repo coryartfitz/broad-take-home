@@ -12,17 +12,17 @@ const {
 
 
 getRoutesDetails(fetchSubwayRoutes()).then(routeDetails => {
-  // Question One Answer
+  // Question One Answer:
   console.log('\nQuestion One: List all "subway" routes by their "long names"\n\n');
   routeDetails.forEach(details => console.log(details.longName)); // Use question ones response to build up a map of promises, each containing all stops per route.
 
   Promise.all(fetchStopsByRoute(routeDetails)).then(stopsPerRoute => {
-    const stopsDetials = getStopsDetials(stopsPerRoute); // Question Two Answers
+    const stopsDetials = getStopsDetials(stopsPerRoute); // Question Two Answers:
 
     console.log('\nQuestion Two: Display the name of the "subway" routes with the most/least stops and list all stops that connect two or more subway routes\n\n');
-    console.log(`The "subway" route with most stops: ${stopsDetials.mostStopsName} with ${stopsDetials.mostStopsCount} stops`);
-    console.log(`The "subway" route with least stops: ${stopsDetials.leastStopsName} with ${stopsDetials.leastStopsCount} stops`);
-    console.log('\nList of all stops that connect two or more "subway" routes along with the relevant route names:');
+    console.log(`Part 1: The "subway" route with most stops: ${stopsDetials.mostStopsName} with ${stopsDetials.mostStopsCount} stops`);
+    console.log(`\nPart 2: The "subway" route with least stops: ${stopsDetials.leastStopsName} with ${stopsDetials.leastStopsCount} stops`);
+    console.log('\nPart 3: List of all stops that connect two or more "subway" routes along with the relevant route names:');
     Object.entries(stopsDetials.stopsThatConnectRoutes).forEach(stop => {
       const details = stop[1];
       console.log(`${details.stopName}: ${details.routes}`);
@@ -41,8 +41,7 @@ const fetch = require('cross-fetch'); // TODO Use async await for these fetch re
 
 const fetchSubwayRoutes = () => {
   return fetchResponse('https://api-v3.mbta.com/routes?filter[type]=0,1');
-}; // TODO: Test me!
-
+};
 
 const fetchStopsByRoute = routes => {
   return routes.map(route => {
@@ -95,8 +94,7 @@ const getStopsDetials = routes => {
   });
   details.stopsThatConnectRoutes = getStopsThatConnectRoutes(allStops);
   return details;
-}; // TODO: Make this not an O(n) version somehow
-// TODO: Split this up into smaller chunks that can be tested individually.
+}; // TODO: Split this up into smaller chunks that can be tested individually.
 // This answers the problem but there has to be a better way to achieve this.
 
 
@@ -111,7 +109,7 @@ const getStopsThatConnectRoutes = allStops => {
         return stop;
       }
     });
-  }).filter(x => x); // Build up a list of duplicte stops and their associated routes
+  }).filter(x => x); // Build up stopsThatConnectRoutes with stops that connect routes along with the relevant route names
 
   duplicateStops.forEach(stop => {
     const stopId = stop.id;
