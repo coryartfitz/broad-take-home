@@ -7,8 +7,11 @@ const {
 const {
   getRoutesDetails,
   getStopsDetails
-} = require('./route-stop-data.js'); // This code's only real purpose is to console log the answers.
-// It was moved here due to the test code console getting muddied by the logs
+} = require('./route-stop-data.js');
+/* 
+* This code's only real purpose is to console log the answers.
+* It was moved here due to the test code console getting muddied by the logs
+*/
 
 
 getRoutesDetails(fetchSubwayRoutes()).then(routeDetails => {
@@ -34,7 +37,7 @@ getRoutesDetails(fetchSubwayRoutes()).then(routeDetails => {
 const fetch = require('cross-fetch'); // TODO Use async await for these fetch requests 
 
 /* 
-* I used the server side filtered api due to it reducing complexity in my code 
+* Why I relied on the filtered API: I used the server side filtered api due to it reducing complexity in my code 
 * and the filtering is likely to be faster this way.
 */
 
@@ -94,8 +97,8 @@ const getStopsDetails = routes => {
   });
   details.stopsThatConnectRoutes = getStopsThatConnectRoutes(allStops);
   return details;
-}; // TODO: Split this up into smaller chunks that can be tested individually.
-// This answers the problem but there has to be a better way to achieve this.
+}; // This answers the problem but there has to be a better way to achieve this.
+// TODO: Split this up into smaller chunks that can be tested individually.
 
 
 const getStopsThatConnectRoutes = allStops => {
