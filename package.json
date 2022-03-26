@@ -1,0 +1,24 @@
+{
+  "name": "mbta",
+  "version": "1.0.0",
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "mocha": "^9.2.1"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "browserify ./app/js/route-stop-data.js ./app/js/answers-output.js ./app/js/api-calls.js > ./app/js/bundle.js -t babelify"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "babelify": "^10.0.0",
+    "cross-fetch": "^3.1.5",
+    "should": "^13.2.3",
+    "typescript": "^4.6.2"
+  }
+}
