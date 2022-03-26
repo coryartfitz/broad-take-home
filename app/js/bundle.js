@@ -6,18 +6,18 @@ const {
 
 const {
   getRoutesDetails,
-  getStopsDetials
-} = require('./route-stop-data.js'); // This codes only real purpose is to console log the answers.
+  getStopsDetails
+} = require('./route-stop-data.js'); // This code's only real purpose is to console log the answers.
 // It was moved here due to the test code console getting muddied by the logs
 
 
 getRoutesDetails(fetchSubwayRoutes()).then(routeDetails => {
   // Question One Answer:
   console.log('\nQuestion One: List all "subway" routes by their "long names"\n\n');
-  routeDetails.forEach(details => console.log(details.longName)); // Use question ones response to build up a map of promises, each containing all stops per route.
+  routeDetails.forEach(details => console.log(details.longName)); // Use question number one's response to build up a map of promises, each containing all stops per route.
 
   Promise.all(fetchStopsByRoute(routeDetails)).then(stopsPerRoute => {
-    const stopsDetials = getStopsDetials(stopsPerRoute); // Question Two Answers:
+    const stopsDetials = getStopsDetails(stopsPerRoute); // Question Two Answers:
 
     console.log('\nQuestion Two: Display the name of the "subway" routes with the most/least stops and list all stops that connect two or more subway routes\n\n');
     console.log(`Part 1: The "subway" route with most stops: ${stopsDetials.mostStopsName} with ${stopsDetials.mostStopsCount} stops`);
@@ -35,7 +35,7 @@ const fetch = require('cross-fetch'); // TODO Use async await for these fetch re
 
 /* 
 * I used the server side filtered api due to it reducing complexity in my code 
-* and the filtering likely being faster this way.
+* and the filtering is likely to be faster this way.
 */
 
 
@@ -68,7 +68,7 @@ const getRoutesDetails = routesByType => routesByType.then(routes => routes.data
   };
 }));
 
-const getStopsDetials = routes => {
+const getStopsDetails = routes => {
   const details = {
     mostStopsCount: 0,
     mostStopsName: '',
@@ -99,9 +99,8 @@ const getStopsDetials = routes => {
 
 
 const getStopsThatConnectRoutes = allStops => {
-  const stopsThatConnectRoutes = {}; // Merge all stops into one big list
-
-  const mergedStops = [].concat.apply([], allStops); // Map over and filter for only duplicate stops - duplicates mean stops exist on multiple routes
+  const stopsThatConnectRoutes = {};
+  const mergedStops = [].concat.apply([], allStops); // Return a list of only the duplicate stops - duplicates mean stops exist on multiple routes
 
   const duplicateStops = mergedStops.map((stop, index) => {
     return mergedStops.find((currentStop, currentIndex) => {
@@ -129,7 +128,7 @@ const getStopsThatConnectRoutes = allStops => {
 
 module.exports = {
   getRoutesDetails,
-  getStopsDetials
+  getStopsDetails
 };
 
 },{}],4:[function(require,module,exports){

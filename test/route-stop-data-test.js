@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { getRoutesDetails, getStopsDetials } = require('../app/js/route-stop-data.js');
+const { getRoutesDetails, getStopsDetails } = require('../app/js/route-stop-data.js');
 
 describe('#displayLongRouteNames()', function () {
     it('should return an array of route name strings', () => {
@@ -24,7 +24,7 @@ describe('#displayLongRouteNames()', function () {
     });
 });
 
-describe('#getStopsDetials()', function () {
+describe('#getStopsDetails()', function () {
     it('should return an object with stops details properties', () => {
         const expected = {
             leastStopsCount: 2,
@@ -40,7 +40,7 @@ describe('#getStopsDetials()', function () {
         };
     
     
-        assert.deepEqual(expected, getStopsDetials((getMockStopsData())));
+        assert.deepEqual(expected, getStopsDetails((getMockStopsData())));
     });
 });
 

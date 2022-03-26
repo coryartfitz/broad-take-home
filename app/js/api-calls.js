@@ -4,7 +4,7 @@ const fetch = require('cross-fetch');
 
 /* 
 * I used the server side filtered api due to it reducing complexity in my code 
-* and the filtering likely being faster this way.
+* and the filtering is likely to be faster this way.
 */
 const fetchSubwayRoutes = () => {
 	return fetchResponse('https://api-v3.mbta.com/routes?filter[type]=0,1');

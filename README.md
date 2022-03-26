@@ -4,19 +4,19 @@ This project contains Cory Fitzpatricks answers to the Broad take-home interview
 
 # How to verify answers
 
-To verify the answers in this project, you can simply open the file /app/index.html and follow the instructions the page displays or folllow the steps below.
+To verify the answers in this project, you can simply open the file /app/index.html and follow the instructions the page displays or follow the steps below.
 
 1. Open the file /app/index.html in your favorite browsers.
 2. Right click anywhere on the page.
 3. Select "Inspect" from the list of options.
-4. Click "Console" in the lsit of tabs along the top of the web inspector
+4. Click "Console" in the list of tabs along the top of the web inspector
 5. View the answers in the console output
 
 # How to build the app and run tests
 
 ## Install the latest Node version
 
-Note: You can skip this if you have node installed already or have a perferd way to do so (I'm pretty sure any version will do).
+Note: You can skip this if you have node installed already or have a preferred way to do so (I'm pretty sure any version will do).
 
  1. Install NVM (Node Version Manager): https://github.com/nvm-sh/nvm
 

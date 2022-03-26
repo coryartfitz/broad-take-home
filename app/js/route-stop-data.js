@@ -5,7 +5,7 @@ const getRoutesDetails = (routesByType) => routesByType.then(routes => routes.da
     }
 }));
 
-const getStopsDetials = (routes) => {
+const getStopsDetails = (routes) => {
     const details = {
         mostStopsCount: 0,
         mostStopsName: '',
@@ -70,4 +70,4 @@ const getStopsThatConnectRoutes = (allStops) => {
     return stopsThatConnectRoutes;  
 }
 
-module.exports = { getRoutesDetails, getStopsDetials };
+module.exports = { getRoutesDetails, getStopsDetails };
