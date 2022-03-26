@@ -1,8 +1,10 @@
 const { fetchSubwayRoutes, fetchStopsByRoute } = require('./api-calls.js'); 
 const { getRoutesDetails, getStopsDetails } = require('./route-stop-data.js');
 
-// This code's only real purpose is to console log the answers.
-// It was moved here due to the test code console getting muddied by the logs
+/* 
+* This code's only real purpose is to console log the answers.
+* It was moved here due to the test code console getting muddied by the logs
+*/
 getRoutesDetails(fetchSubwayRoutes()).then(routeDetails => {
     // Question One Answer:
     console.log('\nQuestion One: List all "subway" routes by their "long names"\n\n');

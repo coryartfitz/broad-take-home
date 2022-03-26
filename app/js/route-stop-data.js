@@ -37,8 +37,8 @@ const getStopsDetails = (routes) => {
     return details;
 }
 
-// TODO: Split this up into smaller chunks that can be tested individually.
 // This answers the problem but there has to be a better way to achieve this.
+// TODO: Split this up into smaller chunks that can be tested individually.
 const getStopsThatConnectRoutes = (allStops) => {
     const stopsThatConnectRoutes = {};
     const mergedStops = [].concat.apply([], allStops);
