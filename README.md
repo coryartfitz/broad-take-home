@@ -22,7 +22,7 @@ Note: You can skip this if you have node installed already or have a preferred w
 
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     
- 2. Get latest version of node
+ 2. Install the latest version of node
 
      Note: If your having trouble see: https://github.com/nvm-sh/nvm#usage
     
@@ -35,14 +35,16 @@ Note: You can skip this if you have node installed already or have a preferred w
 
 ## Install dependencies and build the project
 
- ### Install dependencies 
+### Install dependencies 
 
     npm install
 
 ### Build The Project / Compile the JavaScript
 
+This compiles all ES6 and combines all JavaScript into the file app/js/bundle.js
+
     npm run build
 
-# How to run tests
+# How to run tests in terminal
 
     nmp run test
