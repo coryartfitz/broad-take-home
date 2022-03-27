@@ -3,7 +3,7 @@ const { getRoutesDetails, getStopsDetails } = require('./route-stop-data.js');
 
 /* 
 * This code's only real purpose is to console log the answers.
-* It was moved here due to the test code console getting muddied by the logs
+* It was moved here due to the test console logs getting muddied by the these logs.
 */
 getRoutesDetails(fetchSubwayRoutes()).then(routeDetails => {
     // Question One Answer:
