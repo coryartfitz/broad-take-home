@@ -74,6 +74,4 @@ const getStopsThatConnectRoutes = (allStops) => {
     return connectsMultipleRoutes;  
 }
 
-
-
 module.exports = { getRoutesDetails, getStopsDetails };
