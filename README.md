@@ -3,7 +3,8 @@
 This project contains Cory Fitzpatricks answers to the Broad DSP Engineering Interview take-home questions. Documentation for this code was written in google docs.
 
 Documentation Google Docs Link: https://docs.google.com/document/d/1zB4FtwN3OkYbEBosfaxE619eSWbEbAOZBw8Y5Y8yD3w/edit?usp=sharing
-Documentation Github PDF Github Link: https://github.com/coryartfitz/broad-take-home/blob/main/docs/Broad%20DSP%20Engineering%20Interview%20Take-Home%20Documentation.pdf
+
+Documentation Github PDF Link: https://github.com/coryartfitz/broad-take-home/blob/main/docs/Broad%20DSP%20Engineering%20Interview%20Take-Home%20Documentation.pdf
 
 # How to verify answers
 
