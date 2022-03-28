@@ -16,6 +16,7 @@ const fetchStopsByRoute = (routes) => {
     });
 }
 
+// TODO: Add test for this
 const fetchResponse = (url) => {
     return fetch(url)
         .then((response) => response.json())

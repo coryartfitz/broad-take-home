@@ -1,12 +1,14 @@
 # Introduction
 
-This project contains Cory Fitzpatricks answers to the Broad take-home interview questions.
+This project contains Cory Fitzpatricks answers to the Broad DSP Engineering Interview take-home questions. Documentation for this code was written in google docs.
+
+Documentation Link: https://docs.google.com/document/d/1zB4FtwN3OkYbEBosfaxE619eSWbEbAOZBw8Y5Y8yD3w/edit?usp=sharing
 
 # How to verify answers
 
-To verify the answers in this project, you can simply open the file /app/index.html in your favorite browsers and follow the instructions on the page or you can follow the steps below.
+To verify the answers in this project, you can simply open the file /app/index.html in your favorite browser. View the answers directly on the page or follow the instructions below to view them in the console.
 
-1. Open the file /app/index.html in your favorite browsers.
+1. Open the file /app/index.html in your favorite browser.
 2. Right click anywhere on the page.
 3. Select "Inspect" from the list of options.
 4. Click "Console" in the list of tabs along the top of the web inspector
@@ -26,7 +28,7 @@ Note: You can skip this if you have node installed already or have a preferred w
 
      Note: If your having trouble see: https://github.com/nvm-sh/nvm#usage
     
-        # "node" is an alias for the latest version
+        // "node" is an alias for the latest version
         nvm install node 
 
 3. Use the latest version of Node

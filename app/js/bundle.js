@@ -9,26 +9,51 @@ const {
   getStopsDetails
 } = require('./route-stop-data.js');
 /* 
-* This code's only real purpose is to console log the answers.
+* This code's only real purpose is to console log or display the answers.
 * It was moved here due to the test console logs getting muddied by the these logs.
 */
 
 
 getRoutesDetails(fetchSubwayRoutes()).then(routeDetails => {
-  // Question One Answer:
+  const answerOneTitle = document.getElementById('answer-one-title');
+  const answerOneList = document.getElementById('answer-one-list');
+  const answerTwoTitle = document.getElementById('answer-two-title');
+  const answerTwoPartOneText = document.getElementById('answer-two-part-one-text');
+  const answerTwoPartTwoText = document.getElementById('answer-two-part-two-text');
+  const answerTwoPartThreeText = document.getElementById('answer-two-part-three-text');
+  const answerTwoPartThreeList = document.getElementById('answer-two-part-three-list'); // Question One Answer:
+
   console.log('\nQuestion One: List all "subway" routes by their "long names"\n\n');
-  routeDetails.forEach(details => console.log(details.longName)); // Use question number one's response to build up a map of promises, each containing all stops per route.
+  answerOneTitle.innerHTML = 'Question One: List all "subway" routes by their "long names"';
+  routeDetails.forEach(details => {
+    console.log(details.longName);
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(details.longName));
+    answerOneList.appendChild(li);
+  }); // Use question number one's response to build up a map of promises, each containing all stops per route.
 
   Promise.all(fetchStopsByRoute(routeDetails)).then(stopsPerRoute => {
-    const stopsDetials = getStopsDetails(stopsPerRoute); // Question Two Answers:
+    const stopsDetials = getStopsDetails(stopsPerRoute);
+    const answerTwoTitleText = 'Question Two: Display the name of the "subway" routes with the most/least stops and list all stops that connect two or more subway routes';
+    const partOneAnswerText = `Part 1: The "subway" route with most stops: ${stopsDetials.mostStopsName} with ${stopsDetials.mostStopsCount} stops`;
+    const partTwoAnswerText = `Part 2: The "subway" route with least stops: ${stopsDetials.leastStopsName} with ${stopsDetials.leastStopsCount} stops`;
+    const partThreeAnswerText = 'Part 3: List of all stops that connect two or more "subway" routes along with the relevant route names:'; // Question Two Answers:
 
-    console.log('\nQuestion Two: Display the name of the "subway" routes with the most/least stops and list all stops that connect two or more subway routes\n\n');
-    console.log(`Part 1: The "subway" route with most stops: ${stopsDetials.mostStopsName} with ${stopsDetials.mostStopsCount} stops`);
-    console.log(`\nPart 2: The "subway" route with least stops: ${stopsDetials.leastStopsName} with ${stopsDetials.leastStopsCount} stops`);
-    console.log('\nPart 3: List of all stops that connect two or more "subway" routes along with the relevant route names:');
+    console.log(`\n${answerTwoTitleText}\n\n`);
+    answerTwoTitle.innerHTML = answerTwoTitleText;
+    console.log(partOneAnswerText);
+    answerTwoPartOneText.innerHTML = partOneAnswerText;
+    console.log(`\n${partTwoAnswerText}`);
+    answerTwoPartTwoText.innerHTML = partTwoAnswerText;
+    console.log(`\n${partThreeAnswerText}`);
+    answerTwoPartThreeText.innerHTML = partThreeAnswerText;
     Object.entries(stopsDetials.stopsThatConnectRoutes).forEach(stop => {
       const details = stop[1];
-      console.log(`${details.stopName}: ${details.routes}`);
+      const li = document.createElement('li');
+      const answerThreeListItemText = `${details.stopName}: ${details.routes}`;
+      console.log(answerThreeListItemText);
+      li.appendChild(document.createTextNode(answerThreeListItemText));
+      answerTwoPartThreeList.appendChild(li);
     });
   });
 });
@@ -50,7 +75,8 @@ const fetchStopsByRoute = routes => {
   return routes.map(route => {
     return fetchResponse(`https://api-v3.mbta.com/stops?filter[route]=${route.id}&include=route`);
   });
-};
+}; // TODO: Add test for this
+
 
 const fetchResponse = url => {
   return fetch(url).then(response => response.json()).catch(error => {
@@ -97,12 +123,14 @@ const getStopsDetails = routes => {
   });
   details.stopsThatConnectRoutes = getStopsThatConnectRoutes(allStops);
   return details;
-}; // This answers the problem but there has to be a better way to achieve this.
-// TODO: Split this up into smaller chunks that can be tested individually.
+}; // TODO: Split this up into smaller chunks that can be tested individually.
 
 
 const getStopsThatConnectRoutes = allStops => {
-  const stopsThatConnectRoutes = {};
+  const connectsMultipleRoutes = {}; // Maybe the stops api will let you get a list of all stops filtered for "subway" routes only
+  // If is does we could use this api call for question one but then would have had to sort it by route 
+  // This flattens the allStops array so all stops are in a single list
+
   const mergedStops = [].concat.apply([], allStops); // Return a list of only the duplicate stops - duplicates mean stops exist on multiple routes
 
   const duplicateStops = mergedStops.map((stop, index) => {
@@ -117,16 +145,16 @@ const getStopsThatConnectRoutes = allStops => {
     const stopId = stop.id;
     const routeName = stop.relationships.route.data.id;
 
-    if (!stopsThatConnectRoutes.hasOwnProperty(stopId)) {
-      stopsThatConnectRoutes[stopId] = {
+    if (!connectsMultipleRoutes.hasOwnProperty(stopId)) {
+      connectsMultipleRoutes[stopId] = {
         stopName: stop.attributes.name,
         routes: [routeName]
       };
-    } else if (!stopsThatConnectRoutes[stopId].routes.includes(routeName)) {
-      stopsThatConnectRoutes[stopId].routes.push(routeName);
+    } else if (!connectsMultipleRoutes[stopId].routes.includes(routeName)) {
+      connectsMultipleRoutes[stopId].routes.push(routeName);
     }
   });
-  return stopsThatConnectRoutes;
+  return connectsMultipleRoutes;
 };
 
 module.exports = {

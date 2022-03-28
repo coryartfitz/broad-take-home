@@ -37,10 +37,14 @@ const getStopsDetails = (routes) => {
     return details;
 }
 
-// This answers the problem but there has to be a better way to achieve this.
 // TODO: Split this up into smaller chunks that can be tested individually.
 const getStopsThatConnectRoutes = (allStops) => {
-    const stopsThatConnectRoutes = {};
+    const connectsMultipleRoutes = {};
+
+    // Maybe the stops api will let you get a list of all stops filtered for "subway" routes only
+    // If is does we could use this api call for question one but then would have had to sort it by route 
+    
+    // This flattens the allStops array so all stops are in a single list
     const mergedStops = [].concat.apply([], allStops);
     
     // Return a list of only the duplicate stops - duplicates mean stops exist on multiple routes
@@ -57,17 +61,19 @@ const getStopsThatConnectRoutes = (allStops) => {
         const stopId = stop.id;
         const routeName = stop.relationships.route.data.id;
 
-        if (!stopsThatConnectRoutes.hasOwnProperty(stopId)) {
-            stopsThatConnectRoutes[stopId] = {
+        if (!connectsMultipleRoutes.hasOwnProperty(stopId)) {
+            connectsMultipleRoutes[stopId] = {
                 stopName: stop.attributes.name,
                 routes: [routeName]
             }
-        } else if (!stopsThatConnectRoutes[stopId].routes.includes(routeName)) {
-            stopsThatConnectRoutes[stopId].routes.push(routeName);
+        } else if (!connectsMultipleRoutes[stopId].routes.includes(routeName)) {
+            connectsMultipleRoutes[stopId].routes.push(routeName);
         }
     });
 
-    return stopsThatConnectRoutes;  
+    return connectsMultipleRoutes;  
 }
+
+
 
 module.exports = { getRoutesDetails, getStopsDetails };
