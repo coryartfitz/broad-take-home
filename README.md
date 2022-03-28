@@ -25,6 +25,12 @@ Note: You can skip this if you have node installed already or have a preferred w
  1. Install NVM (Node Version Manager): https://github.com/nvm-sh/nvm
 
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+    Load nvm without having to restart your terminal:
+
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
     
  2. Install the latest version of node
 
@@ -51,4 +57,4 @@ This compiles all ES6 and combines all JavaScript into the file app/js/bundle.js
 
 # How to run tests in terminal
 
-    nmp run test
+    npm run test
