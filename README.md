@@ -3,8 +3,7 @@
 This project contains Cory Fitzpatricks answers to the Broad DSP Engineering Interview take-home questions. Documentation for this code was written in google docs.
 
 Documentation Google Docs Link: https://docs.google.com/document/d/1zB4FtwN3OkYbEBosfaxE619eSWbEbAOZBw8Y5Y8yD3w/edit?usp=sharing
-
-Documentation Github PDF Link: https://github.com/coryartfitz/broad-take-home/blob/main/docs/Broad%20DSP%20Engineering%20Interview%20Take-Home%20Documentation.pdf
+* Documentation can also be found in the /docs folder: Documentation - Broad DSP Engineering Interview Take-Home.pdf 
 
 # How to verify answers
 
@@ -28,7 +27,7 @@ Note: You can skip this if you have node installed already or have a preferred w
 
     Load nvm without having to restart your terminal:
 
-        export NVM_DIR="$HOME/.nvm"
+        export NVM_DIR="$HOME/.nvm"git
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
     
