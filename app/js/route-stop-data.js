@@ -45,6 +45,7 @@ const getStopsThatConnectRoutes = (allStops) => {
     // If is does we could use this api call for question one but then would have had to sort it by route 
     
     // This flattens the allStops array so all stops are in a single list
+    // TODO: Use a flat map here to make this more readable
     const mergedStops = [].concat.apply([], allStops);
     
     // Return a list of only the duplicate stops - duplicates mean stops exist on multiple routes
