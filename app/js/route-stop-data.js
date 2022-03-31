@@ -57,7 +57,7 @@ const getStopsThatConnectRoutes = (allStops) => {
         });
     }).filter(stop => stop);
 
-    // Build up stopsThatConnectRoutes with stops that connect routes along with the relevant route names
+    // Build up stopsThatConnectRoutes with relevant stops and the relevant route names
     duplicateStops.forEach(stop => {
         const stopId = stop.id;
         const routeName = stop.relationships.route.data.id;
